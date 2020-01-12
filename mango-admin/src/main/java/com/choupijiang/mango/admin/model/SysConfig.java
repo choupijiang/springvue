@@ -11,7 +11,7 @@ import java.sql.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author jobob
@@ -37,7 +37,7 @@ public class SysConfig extends BaseModel {
     private String remarks;
 
     /**
-     *   -1  0
+     * -1  0
      */
     private Integer delFlag;
 

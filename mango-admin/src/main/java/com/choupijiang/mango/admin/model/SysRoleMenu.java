@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author jobob
@@ -35,7 +35,6 @@ public class SysRoleMenu extends BaseModel {
      * ID
      */
     private Long menuId;
-
 
 
 }

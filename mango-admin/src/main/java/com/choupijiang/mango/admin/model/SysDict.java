@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author jobob
@@ -25,7 +25,6 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class SysDict extends BaseModel {
-
 
 
     private String value;
@@ -42,7 +41,7 @@ public class SysDict extends BaseModel {
     private String remarks;
 
     /**
-     *   -1  0
+     * -1  0
      */
     private Integer delFlag;
 

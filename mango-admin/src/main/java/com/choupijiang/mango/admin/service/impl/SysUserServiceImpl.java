@@ -24,16 +24,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.util.*;
+
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author jobob
  * @since 2019-12-14
  */
 @Service
-public class SysUserServiceImpl   implements ISysUserService {
+public class SysUserServiceImpl implements ISysUserService {
     @Autowired
     private SysUserMapper sysUserMapper;
     @Autowired
@@ -47,7 +48,7 @@ public class SysUserServiceImpl   implements ISysUserService {
     @Override
     public int save(SysUser record) {
         Long id = null;
-        if(record.getId() == null || record.getId() == 0) {
+        if (record.getId() == null || record.getId() == 0) {
             // 新增用户
             sysUserMapper.insert(record);
             id = record.getId();
@@ -56,17 +57,17 @@ public class SysUserServiceImpl   implements ISysUserService {
             sysUserMapper.updateById(record);
         }
         // 更新用户角色
-        if(id != null && id == 0) {
+        if (id != null && id == 0) {
             return 1;
         }
-        if(id != null) {
-            for(SysUserRole sysUserRole:record.getUserRoles()) {
+        if (id != null) {
+            for (SysUserRole sysUserRole : record.getUserRoles()) {
                 sysUserRole.setUserId(id);
             }
         } else {
             sysUserRoleMapper.deleteById(record.getId());
         }
-        for(SysUserRole sysUserRole:record.getUserRoles()) {
+        for (SysUserRole sysUserRole : record.getUserRoles()) {
             sysUserRoleMapper.insert(sysUserRole);
         }
         return 1;
@@ -79,7 +80,7 @@ public class SysUserServiceImpl   implements ISysUserService {
 
     @Override
     public int delete(List<SysUser> records) {
-        for(SysUser record:records) {
+        for (SysUser record : records) {
             delete(record);
         }
         return 1;
@@ -100,8 +101,8 @@ public class SysUserServiceImpl   implements ISysUserService {
         PageResult pageResult = null;
         Object name = pageRequest.getParam("name");
         Object email = pageRequest.getParam("email");
-        if(name != null) {
-            if(email != null) {
+        if (name != null) {
+            if (email != null) {
                 pageResult = MybatisPageHelper.findPage(pageRequest, sysUserMapper, "findPageByNameAndEmail", name, email);
             } else {
                 pageResult = MybatisPageHelper.findPage(pageRequest, sysUserMapper, "findPageByName", name);
@@ -116,11 +117,12 @@ public class SysUserServiceImpl   implements ISysUserService {
 
     /**
      * 加载用户角色
+     *
      * @param pageResult
      */
     private void findUserRoles(PageResult pageResult) {
         List<?> content = pageResult.getContent();
-        for(Object object:content) {
+        for (Object object : content) {
             SysUser sysUser = (SysUser) object;
             List<SysUserRole> userRoles = findUserRoles(sysUser.getId());
             sysUser.setUserRoles(userRoles);
@@ -130,14 +132,14 @@ public class SysUserServiceImpl   implements ISysUserService {
 
     private String getRoleNames(List<SysUserRole> userRoles) {
         StringBuilder sb = new StringBuilder();
-        for(Iterator<SysUserRole> iter=userRoles.iterator(); iter.hasNext();) {
+        for (Iterator<SysUserRole> iter = userRoles.iterator(); iter.hasNext(); ) {
             SysUserRole userRole = iter.next();
             SysRole sysRole = sysRoleMapper.selectById(userRole.getRoleId());
-            if(sysRole == null) {
-                continue ;
+            if (sysRole == null) {
+                continue;
             }
             sb.append(sysRole.getRemark());
-            if(iter.hasNext()) {
+            if (iter.hasNext()) {
                 sb.append(", ");
             }
         }
@@ -148,8 +150,8 @@ public class SysUserServiceImpl   implements ISysUserService {
     public Set<String> findPermissions(String userName) {
         Set<String> perms = new HashSet<>();
         List<SysMenu> sysMenus = sysMenuService.findByUser(userName);
-        for(SysMenu sysMenu:sysMenus) {
-            if(sysMenu.getPerms() != null && !"".equals(sysMenu.getPerms())) {
+        for (SysMenu sysMenu : sysMenus) {
+            if (sysMenu.getPerms() != null && !"".equals(sysMenu.getPerms())) {
                 perms.add(sysMenu.getPerms());
             }
         }
@@ -167,7 +169,7 @@ public class SysUserServiceImpl   implements ISysUserService {
         return createUserExcelFile(pageResult.getContent());
     }
 
-    public static File createUserExcelFile(List<?> records) {
+    public File createUserExcelFile(List<?> records) {
         if (records == null) {
             records = new ArrayList<>();
         }

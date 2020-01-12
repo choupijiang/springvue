@@ -5,7 +5,8 @@ import java.util.UUID;
 public class PasswordUtils {
     /**
      * 匹配密码
-     * @param salt 盐
+     *
+     * @param salt    盐
      * @param rawPass 明文
      * @param encPass 密文
      * @return
@@ -16,6 +17,7 @@ public class PasswordUtils {
 
     /**
      * 明文密码加密
+     *
      * @param rawPass 明文
      * @param salt
      * @return
@@ -26,6 +28,7 @@ public class PasswordUtils {
 
     /**
      * 获取加密盐
+     *
      * @return
      */
     public static String getSalt() {

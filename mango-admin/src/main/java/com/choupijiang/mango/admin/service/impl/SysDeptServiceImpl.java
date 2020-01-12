@@ -15,21 +15,21 @@ import java.util.ArrayList;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author jobob
  * @since 2019-12-14
  */
 @Service
-public class SysDeptServiceImpl  implements ISysDeptService {
+public class SysDeptServiceImpl implements ISysDeptService {
 
     @Autowired
     private SysDeptMapper sysDeptMapper;
 
     @Override
     public int save(SysDept record) {
-        if(record.getId() == null || record.getId() == 0) {
+        if (record.getId() == null || record.getId() == 0) {
             return sysDeptMapper.insert(record);
         }
         return sysDeptMapper.updateById(record);
@@ -42,7 +42,7 @@ public class SysDeptServiceImpl  implements ISysDeptService {
 
     @Override
     public int delete(List<SysDept> records) {
-        for(SysDept record:records) {
+        for (SysDept record : records) {
             delete(record);
         }
         return 1;

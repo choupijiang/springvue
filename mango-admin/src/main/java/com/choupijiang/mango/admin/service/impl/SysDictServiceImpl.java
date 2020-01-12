@@ -12,22 +12,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author jobob
  * @since 2019-12-14
  */
 @Service
-public class SysDictServiceImpl   implements ISysDictService {
+public class SysDictServiceImpl implements ISysDictService {
     @Autowired
     private SysDictMapper sysDictMapper;
 
     @Override
     public int save(SysDict record) {
-        if(record.getId() == null || record.getId() == 0) {
+        if (record.getId() == null || record.getId() == 0) {
             return sysDictMapper.insert(record);
         }
         return sysDictMapper.updateById(record);
@@ -40,7 +41,7 @@ public class SysDictServiceImpl   implements ISysDictService {
 
     @Override
     public int delete(List<SysDict> records) {
-        for(SysDict record:records) {
+        for (SysDict record : records) {
             delete(record);
         }
         return 1;
@@ -54,7 +55,7 @@ public class SysDictServiceImpl   implements ISysDictService {
     @Override
     public PageResult findPage(PageRequest pageRequest) {
         Object label = pageRequest.getParam("label");
-        if(label != null) {
+        if (label != null) {
             return MybatisPageHelper.findPage(pageRequest, sysDictMapper, "findPageByLabel", label);
         }
         return MybatisPageHelper.findPage(pageRequest, sysDictMapper);

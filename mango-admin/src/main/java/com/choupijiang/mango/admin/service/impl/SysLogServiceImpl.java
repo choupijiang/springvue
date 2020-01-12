@@ -11,23 +11,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author jobob
  * @since 2019-12-14
  */
 @Service
-public class SysLogServiceImpl  implements ISysLogService {
+public class SysLogServiceImpl implements ISysLogService {
 
     @Autowired
     private SysLogMapper sysLogMapper;
 
     @Override
     public int save(SysLog record) {
-        if(record.getId() == null || record.getId() == 0) {
+        if (record.getId() == null || record.getId() == 0) {
             return sysLogMapper.insert(record);
         }
         return sysLogMapper.updateById(record);
@@ -40,7 +41,7 @@ public class SysLogServiceImpl  implements ISysLogService {
 
     @Override
     public int delete(List<SysLog> records) {
-        for(SysLog record:records) {
+        for (SysLog record : records) {
             delete(record);
         }
         return 1;
@@ -54,7 +55,7 @@ public class SysLogServiceImpl  implements ISysLogService {
     @Override
     public PageResult findPage(PageRequest pageRequest) {
         Object label = pageRequest.getParam("userName");
-        if(label != null) {
+        if (label != null) {
             return MybatisPageHelper.findPage(pageRequest, sysLogMapper, "findPageByUserName", label);
         }
         return MybatisPageHelper.findPage(pageRequest, sysLogMapper);

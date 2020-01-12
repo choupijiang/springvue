@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author jobob
@@ -22,7 +22,7 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
     @Select("select m.* from sys_menu m, sys_user u, sys_user_role ur, sys_role_menu rm\n" +
             "  \twhere u.name = #{userName} and u.id = ur.user_id \n" +
             "  \tand ur.role_id = rm.role_id and rm.menu_id = m.id")
-    public List<SysMenu> findByUserName( String userName);
+    public List<SysMenu> findByUserName(String userName);
 
     @Select("  select m.* from sys_menu m, sys_role_menu rm\n" +
             "    where rm.role_id = #{roleId}\n" +

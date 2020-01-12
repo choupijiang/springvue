@@ -18,16 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
+
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author jobob
  * @since 2019-12-14
  */
 @Service
-public class SysRoleServiceImpl  implements ISysRoleService {
+public class SysRoleServiceImpl implements ISysRoleService {
     @Autowired
     private SysRoleMapper sysRoleMapper;
     @Autowired
@@ -37,7 +38,7 @@ public class SysRoleServiceImpl  implements ISysRoleService {
 
     @Override
     public int save(SysRole record) {
-        if(record.getId() == null || record.getId() == 0) {
+        if (record.getId() == null || record.getId() == 0) {
             return sysRoleMapper.insert(record);
         }
         return sysRoleMapper.updateById(record);
@@ -50,7 +51,7 @@ public class SysRoleServiceImpl  implements ISysRoleService {
 
     @Override
     public int delete(List<SysRole> records) {
-        for(SysRole record:records) {
+        for (SysRole record : records) {
             delete(record);
         }
         return 1;
@@ -64,7 +65,7 @@ public class SysRoleServiceImpl  implements ISysRoleService {
     @Override
     public PageResult findPage(PageRequest pageRequest) {
         Object label = pageRequest.getParam("name");
-        if(label != null) {
+        if (label != null) {
             return MybatisPageHelper.findPage(pageRequest, sysRoleMapper, "findPageByName", label);
         }
         return MybatisPageHelper.findPage(pageRequest, sysRoleMapper);
@@ -86,7 +87,7 @@ public class SysRoleServiceImpl  implements ISysRoleService {
     @Override
     public List<SysMenu> findRoleMenus(Long roleId) {
         SysRole sysRole = sysRoleMapper.selectById(roleId);
-        if(SysConstants.ADMIN.equalsIgnoreCase(sysRole.getName())) {
+        if (SysConstants.ADMIN.equalsIgnoreCase(sysRole.getName())) {
             // 如果是超级管理员，返回全部
             return sysMenuMapper.selectList(null);
         }
@@ -96,12 +97,12 @@ public class SysRoleServiceImpl  implements ISysRoleService {
     @Transactional
     @Override
     public int saveRoleMenus(List<SysRoleMenu> records) {
-        if(records == null || records.isEmpty()) {
+        if (records == null || records.isEmpty()) {
             return 1;
         }
         Long roleId = records.get(0).getRoleId();
         sysRoleMenuMapper.deleteById(roleId);
-        for(SysRoleMenu record:records) {
+        for (SysRoleMenu record : records) {
             sysRoleMenuMapper.insert(record);
         }
         return 1;

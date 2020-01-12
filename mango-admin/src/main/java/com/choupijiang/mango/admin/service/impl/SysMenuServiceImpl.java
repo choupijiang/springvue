@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author jobob
@@ -32,10 +32,10 @@ public class SysMenuServiceImpl implements ISysMenuService {
 
     @Override
     public int save(SysMenu record) {
-        if(record.getId() == null || record.getId() == 0) {
+        if (record.getId() == null || record.getId() == 0) {
             return sysMenuMapper.insert(record);
         }
-        if(record.getParentId() == null) {
+        if (record.getParentId() == null) {
             record.setParentId(0L);
         }
         return sysMenuMapper.updateById(record);
@@ -48,7 +48,7 @@ public class SysMenuServiceImpl implements ISysMenuService {
 
     @Override
     public int delete(List<SysMenu> records) {
-        for(SysMenu record:records) {
+        for (SysMenu record : records) {
             delete(record);
         }
         return 1;
@@ -71,7 +71,7 @@ public class SysMenuServiceImpl implements ISysMenuService {
         for (SysMenu menu : menus) {
             if (menu.getParentId() == null || menu.getParentId() == 0) {
                 menu.setLevel(0);
-                if(!exists(sysMenus, menu)) {
+                if (!exists(sysMenus, menu)) {
                     sysMenus.add(menu);
                 }
             }
@@ -83,7 +83,7 @@ public class SysMenuServiceImpl implements ISysMenuService {
 
     @Override
     public List<SysMenu> findByUser(String userName) {
-        if(userName == null || "".equals(userName) || SysConstants.ADMIN.equalsIgnoreCase(userName)) {
+        if (userName == null || "".equals(userName) || SysConstants.ADMIN.equalsIgnoreCase(userName)) {
             return sysMenuMapper.selectList(null);
         }
         return sysMenuMapper.findByUserName(userName);
@@ -93,14 +93,14 @@ public class SysMenuServiceImpl implements ISysMenuService {
         for (SysMenu SysMenu : SysMenus) {
             List<SysMenu> children = new ArrayList<>();
             for (SysMenu menu : menus) {
-                if(menuType == 1 && menu.getType() == 2) {
+                if (menuType == 1 && menu.getType() == 2) {
                     // 如果是获取类型不需要按钮，且菜单类型是按钮的，直接过滤掉
-                    continue ;
+                    continue;
                 }
                 if (SysMenu.getId() != null && SysMenu.getId().equals(menu.getParentId())) {
                     menu.setParentName(SysMenu.getName());
                     menu.setLevel(SysMenu.getLevel() + 1);
-                    if(!exists(children, menu)) {
+                    if (!exists(children, menu)) {
                         children.add(menu);
                     }
                 }
@@ -113,8 +113,8 @@ public class SysMenuServiceImpl implements ISysMenuService {
 
     private boolean exists(List<SysMenu> sysMenus, SysMenu sysMenu) {
         boolean exist = false;
-        for(SysMenu menu:sysMenus) {
-            if(menu.getId().equals(sysMenu.getId())) {
+        for (SysMenu menu : sysMenus) {
+            if (menu.getId().equals(sysMenu.getId())) {
                 exist = true;
             }
         }

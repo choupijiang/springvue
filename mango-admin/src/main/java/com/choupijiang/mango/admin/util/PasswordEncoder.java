@@ -4,8 +4,8 @@ import java.security.MessageDigest;
 
 public class PasswordEncoder {
 
-    private final static String[] hexDigits = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d",
-            "e", "f" };
+    private final static String[] hexDigits = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d",
+            "e", "f"};
 
     private final static String MD5 = "MD5";
     private final static String SHA = "SHA";
@@ -24,6 +24,7 @@ public class PasswordEncoder {
 
     /**
      * 密码加密
+     *
      * @param rawPass
      * @return
      */
@@ -40,6 +41,7 @@ public class PasswordEncoder {
 
     /**
      * 密码匹配验证
+     *
      * @param encPass 密文
      * @param rawPass 明文
      * @return
@@ -66,8 +68,7 @@ public class PasswordEncoder {
     /**
      * 转换字节数组为16进制字串
      *
-     * @param b
-     *            字节数组
+     * @param b 字节数组
      * @return 16进制字串
      */
     private String byteArrayToHexString(byte[] b) {
@@ -80,6 +81,7 @@ public class PasswordEncoder {
 
     /**
      * 将字节转换为16进制
+     *
      * @param b
      * @return
      */

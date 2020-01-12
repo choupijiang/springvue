@@ -6,7 +6,7 @@ import com.choupijiang.mango.core.service.CurdService;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author jobob

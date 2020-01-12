@@ -12,7 +12,7 @@ import java.util.Set;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author jobob
@@ -24,6 +24,7 @@ public interface ISysUserService extends CurdService<SysUser> {
 
     /**
      * 查找用户的菜单权限标识集合
+     *
      * @param userName
      * @return
      */
@@ -31,6 +32,7 @@ public interface ISysUserService extends CurdService<SysUser> {
 
     /**
      * 查找用户的角色集合
+     *
      * @param
      * @return
      */

@@ -15,14 +15,14 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author jobob
  * @since 2019-12-14
  */
 @Service
-public class SysConfigServiceImpl  implements ISysConfigService {
+public class SysConfigServiceImpl implements ISysConfigService {
 
 
     @Autowired
@@ -31,7 +31,7 @@ public class SysConfigServiceImpl  implements ISysConfigService {
 
     @Override
     public int save(SysConfig record) {
-        if(record.getId() == null || record.getId() == 0) {
+        if (record.getId() == null || record.getId() == 0) {
             return sysConfigMapper.insert(record);
         }
         return sysConfigMapper.updateById(record);
@@ -44,7 +44,7 @@ public class SysConfigServiceImpl  implements ISysConfigService {
 
     @Override
     public int delete(List<SysConfig> records) {
-        for(SysConfig record:records) {
+        for (SysConfig record : records) {
             delete(record);
         }
         return 1;
@@ -58,7 +58,7 @@ public class SysConfigServiceImpl  implements ISysConfigService {
     @Override
     public PageResult findPage(PageRequest pageRequest) {
         Object label = pageRequest.getParam("label");
-        if(label != null) {
+        if (label != null) {
             return MybatisPageHelper.findPage(pageRequest, sysConfigMapper, "findPageByLabel", label);
         }
         return MybatisPageHelper.findPage(pageRequest, sysConfigMapper);

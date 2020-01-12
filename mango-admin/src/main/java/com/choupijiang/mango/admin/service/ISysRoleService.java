@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author jobob
@@ -19,18 +19,21 @@ import java.util.List;
 public interface ISysRoleService extends CurdService<SysRole> {
     /**
      * 查询全部
+     *
      * @return
      */
     List<SysRole> findAll();
 
     /**
      * 查询角色菜单集合
+     *
      * @return
      */
     List<SysMenu> findRoleMenus(Long roleId);
 
     /**
      * 保存角色菜单
+     *
      * @param records
      * @return
      */
@@ -38,6 +41,7 @@ public interface ISysRoleService extends CurdService<SysRole> {
 
     /**
      * 根据名称查询
+     *
      * @param name
      * @return
      */

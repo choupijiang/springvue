@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author jobob
@@ -31,7 +31,7 @@ public class SysRole extends BaseModel {
     private String remark;
 
     /**
-     *   -1  0
+     * -1  0
      */
     private Integer delFlag;
 

@@ -14,21 +14,21 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author jobob
  * @since 2019-12-14
  */
 @Service
-public class SysLoginLogServiceImpl  implements ISysLoginLogService {
+public class SysLoginLogServiceImpl implements ISysLoginLogService {
 
     @Autowired
     private SysLoginLogMapper sysLoginLogMapper;
 
     @Override
     public int save(SysLoginLog record) {
-        if(record.getId() == null || record.getId() == 0) {
+        if (record.getId() == null || record.getId() == 0) {
             return sysLoginLogMapper.insert(record);
         }
         return sysLoginLogMapper.updateById(record);
@@ -42,7 +42,7 @@ public class SysLoginLogServiceImpl  implements ISysLoginLogService {
 
     @Override
     public int delete(List<SysLoginLog> records) {
-        for(SysLoginLog record:records) {
+        for (SysLoginLog record : records) {
             delete(record);
         }
         return 1;
@@ -56,11 +56,11 @@ public class SysLoginLogServiceImpl  implements ISysLoginLogService {
     @Override
     public PageResult findPage(PageRequest pageRequest) {
         Object userName = pageRequest.getParam("userName");
-        if(userName != null) {
+        if (userName != null) {
             return MybatisPageHelper.findPage(pageRequest, sysLoginLogMapper, "findPageByUserName", userName);
         }
         Object status = pageRequest.getParam("status");
-        if(status != null) {
+        if (status != null) {
             return MybatisPageHelper.findPage(pageRequest, sysLoginLogMapper, "findPageByStatus", status);
         }
         return MybatisPageHelper.findPage(pageRequest, sysLoginLogMapper);

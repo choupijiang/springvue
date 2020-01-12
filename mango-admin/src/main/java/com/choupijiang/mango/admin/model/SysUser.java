@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author jobob
@@ -46,7 +46,7 @@ public class SysUser extends BaseModel {
     private String mobile;
 
     /**
-     *   0   1
+     * 0   1
      */
     private Integer status;
 
@@ -56,7 +56,7 @@ public class SysUser extends BaseModel {
     private Long deptId;
 
     /**
-     *   -1  0
+     * -1  0
      */
     private Integer delFlag;
 
@@ -69,7 +69,6 @@ public class SysUser extends BaseModel {
     // 非数据库字段
     @TableField(exist = false)
     private List<SysUserRole> userRoles = new ArrayList<>();
-
 
 
 }

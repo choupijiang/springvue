@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author jobob
@@ -46,7 +46,7 @@ public class SysMenu extends BaseModel {
     private String perms;
 
     /**
-     *    0   1   2
+     * 0   1   2
      */
     private Integer type;
 
@@ -55,7 +55,7 @@ public class SysMenu extends BaseModel {
     private Integer orderNum;
 
     /**
-     *   -1  0
+     * -1  0
      */
     private Integer delFlag;
 
@@ -68,7 +68,6 @@ public class SysMenu extends BaseModel {
     // 非数据库字段
     @TableField(exist = false)
     private List<SysMenu> children;
-
 
 
 }

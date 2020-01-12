@@ -14,7 +14,7 @@ import org.apache.commons.collections.functors.FalsePredicate;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author jobob
@@ -28,7 +28,6 @@ import org.apache.commons.collections.functors.FalsePredicate;
 public class SysDept extends BaseModel {
 
 
-
     private String name;
 
     /**
@@ -40,7 +39,7 @@ public class SysDept extends BaseModel {
 
 
     /**
-     *   -1  0
+     * -1  0
      */
     private Integer delFlag;
 
