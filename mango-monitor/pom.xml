@@ -9,37 +9,33 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.choupijiang</groupId>
-	<artifactId>mango-backup</artifactId>
+	<artifactId>mango-monitor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mango-backup</name>
+	<name>mango-monitor</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
 
+
+
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-server</artifactId>
+			<version>2.0.4</version>
 		</dependency>
 
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>LATEST</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>LATEST</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.choupijiang</groupId>
-			<artifactId>mango-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-server-ui</artifactId>
+			<version>2.0.4</version>
 		</dependency>
 
 		<dependency>
@@ -49,22 +45,11 @@
 		</dependency>
 
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-starter-client</artifactId>
-			<version>2.0.4</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
 		</dependency>
-    </dependencies>
 
+	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
@@ -80,15 +65,6 @@
 	</dependencyManagement>
 
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*</include>
-				</includes>
-				<filtering>false</filtering>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
